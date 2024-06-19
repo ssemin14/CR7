@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronaldo Goals Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #gameArea {
+            margin-top: 20px;
+        }
+        #ronaldo {
+            width: 300px;
+            height: auto;
+            cursor: pointer;
+        }
+        #congratulations {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            padding-top: 50px;
+            z-index: 9999;
+        }
+        #congratulations img {
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+        #cheatButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #cheatButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ronaldo Goals Game</h1>
+    <div id="gameArea">
+        <img id="ronaldo" src="HO4.jpg" alt="Ronaldo" onclick="scoreGoal()">
+        <p id="goalCount">Goals: <span id="goalNumber">0</span></p>
+        <button id="cheatButton" onclick="useCheat()">치트 버튼</button>
+    </div>
+
+    <!-- 축하 메시지 -->
+    <div id="congratulations">
+        <img src="HO6.jpg" alt="Ronaldo GOAT">
+        <p>호날두는 GOAT가 되었습니다!</p>
+    </div>
+
+    <script>
+        let goals = 0;
+
+        function scoreGoal() {
+            goals++;
+            document.getElementById('goalNumber').textContent = goals;
+
+            if (goals === 100) {
+                document.getElementById('ronaldo').src = 'HO.jpg';
+                alert('축하합니다! 호날두가 100골을 달성했습니다!');
+            } else if (goals === 300) {
+                document.getElementById('ronaldo').src = 'HO5.jpg';
+                alert('와우! 호날두가 300골을 달성했습니다!');
+            } else if (goals === 500) {
+                document.getElementById('ronaldo').src = 'HO3.jpg';
+                alert('대단해요! 호날두가 500골을 달성했습니다!');
+            } else if (goals === 1000) {
+                document.getElementById('gameArea').style.display = 'none'; // 게임 영역 숨기기
+                document.getElementById('congratulations').style.display = 'block'; // 축하 메시지 보이기
+            }
+        }
+
+        // 치트 버튼 클릭 시 호출되는 함수
+        function useCheat() {
+            for (let i = 0; i < 100; i++) {
+                scoreGoal();
+            }
+        }
+    </script>
+</body>
+</html>
